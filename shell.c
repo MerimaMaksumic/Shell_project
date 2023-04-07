@@ -1,17 +1,17 @@
-#include <stdio.h>
-#include <string.h>
-#include <strings.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include <time.h>
-#include <sys/sysinfo.h>
+#include <stdio.h> //fflush, perror, fprintf, fopen, fgetc, fputc, fclose
+#include <string.h> //strcpy,strtok,strsep,strcmp
+#include <stdlib.h> //system, srand
+#include <unistd.h> //fork,pipe,exec,usleep, getcwd, gethostname, close , dup2
+#include <sys/types.h> //waitpid
+#include <sys/wait.h>//waitpid
+#include <readline/readline.h> //readline
+#include <readline/history.h> //add_history
+#include <sys/sysinfo.h> //sysinfo
 #include <signal.h> // for SIGINT
-#include <errno.h>
- 
+#include <errno.h> //for specific errors
+/*#include <time.h> 
+#include <strings.h>
+*/
 #define MAX_INPUT 200
 #define MAX_ARG 10
 
@@ -87,7 +87,8 @@ int i;
 for (i = 0; i <= 100; i++) {
     printf("Loading: [%-20s] %3d%%\r", "====================", i);
     fflush(stdout);
-    usleep(25000);
+    usleep(20000);
+
 }
 printf("\n");
 
@@ -435,7 +436,7 @@ void help()
     printf(">cp\n");
     printf(">history [-r]\n");
     printf(">fortune [-a]\n");
-    printf(">free [-b /-g ]\n");
+    printf(">free [-b/-m/-g]\n");
     printf(">forkbomb(CAUTION)\n");
     printf(">exit\n");
     white();
