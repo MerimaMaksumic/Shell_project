@@ -90,8 +90,7 @@ https://stackoverflow.com/questions/20974717/why-does-read-have-to-be-a-system-c
 ## **Authors/contacts:**
 
 Merima Maksumic   merima.maksumic@stu.ibu.edu.ba
-
-Ismar kovacevic   ismar.kovacevic@stu.ibu.edu.ba
+Ismar Kovačević   ismar.kovacevic@stu.ibu.edu.ba
 
 
 # **Warning**
@@ -109,7 +108,6 @@ Also if we had more time we would implement redirecting, which we did use in our
 
 Since reading from disk involves hardware access and privileged instructions that can only be performed by the operating system, kernel mode must be used. To request the data from the disk, the software would need to send a system call to the kernel. The kernel would then conduct the I/O operation on the program's behalf.
 
-
 Depending on the hardware and operating system configuration, reading the current time from the hardware clock can be done either in user mode or kernel mode. On some systems, reading the clock might call for a context transition to kernel mode and a system call to the kernel. Other systems might have a memory-mapped hardware register that allows user mode access to the clock without a system call or context switch. However, access to kernel mode would be necessary to change the clock or adjust the system time.
 
 
@@ -121,7 +119,6 @@ A user-level software can request a service from the operating system kernel usi
 
 
 There are several categories of system calls, including:
-
 Process control: These system calls allow a program to create, manipulate, and terminate processes. 
 
 Examples include:
@@ -131,11 +128,7 @@ exec(): replaces the current process image with a new process image
 wait(): waits for a child process to terminate
 
 
-
-
-
 File management: These system calls are used to create, modify, and delete files and directories. 
-
 Examples include:
 
 open(): opens a file for reading, writing, or both
@@ -143,15 +136,13 @@ read(): reads data from a file
 write(): writes data to a file
 
 Device management: These system calls allow a program to interact with hardware devices, such as printers and network cards.
- 
-Examples include:
+ Examples include:
 
 ioctl(): controls the operation of a device
 read(): reads data from a device
 write(): writes data to a device
 
 Information maintenance: These system calls provide access to system information, such as the system time and user account information. 
-
 Examples include:
 
 gettimeofday(): retrieves the current time of day
@@ -159,7 +150,6 @@ getuid(): retrieves the user ID of the current process
 getpid(): retrieves the process ID of the current process
 
 Communication: These system calls allow processes to communicate with each other, either locally or over a network. 
-
 Examples include:
 
 socket(): creates a network socket
