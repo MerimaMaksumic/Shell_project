@@ -7,7 +7,6 @@
 #include <readline/readline.h> //readline
 #include <readline/history.h> //add_history
 #include <sys/sysinfo.h> //sysinfo
-#include <signal.h> // for SIGINT
 #include <errno.h> //for specific errors
 
 
