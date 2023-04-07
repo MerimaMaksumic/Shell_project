@@ -9,13 +9,12 @@
 #include <sys/sysinfo.h> //sysinfo
 #include <signal.h> // for SIGINT
 #include <errno.h> //for specific errors
-/*#include <time.h> 
-#include <strings.h>
-*/
+
+
 #define MAX_INPUT 200
 #define MAX_ARG 10
 
-char* BuiltInCmd[8] = {"cd", "exit", "help", "cp", "history", "fortune", "free", "forkbomb"};
+char* BuiltInCmd[7] = {"cd", "exit", "help", "cp", "history", "fortune", "free"};
 
  //variables for history
 static const char *historyCmd[100];
@@ -50,7 +49,6 @@ int BuiltIn(char** cmd); //function that handles our Built-In functions
 void executePipeCmd(char** cmd, char** pipeCmd); //executes the pipe
 void executeExternalCmd(char** cmd); //executes programs with fork() that are not Built-In 
 void help(); //help
-void forkBomb_cmd(); // Built-In forkbomb
 void cp_cmd(char** cmd); // Built-In copy 
 void history_cmd(char** cmd); //Built-In history
 void fortune_cmd(char** cmd); //Built-In fortune
@@ -278,7 +276,7 @@ void executePipeCmd(char** cmd, char** pipeCmd){
 int BuiltIn(char** cmd){
     int cmdNum;
     
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 7; i++) {
         if (strcmp(cmd[0], BuiltInCmd[i]) == 0) {
             cmdNum=i+1;
             break;
@@ -306,9 +304,6 @@ int BuiltIn(char** cmd){
     case 7:
 	    free_cmd(cmd);
 	    return 1;
-    case 8:
-        forkBomb_cmd();
-        return 1;
     default:
         break;
     }
@@ -419,13 +414,6 @@ void cp_cmd(char** cmd)
 }
  
 
-void forkBomb_cmd(){
-    while(1)
-        fork();
-    return;
-}
- 
-
 
 void help()
 {
@@ -437,7 +425,6 @@ void help()
     printf(">history [-r]\n");
     printf(">fortune [-a]\n");
     printf(">free [-b/-m/-g]\n");
-    printf(">forkbomb(CAUTION)\n");
     printf(">exit\n");
     white();
     return;
